@@ -34,7 +34,7 @@ SELECT o.order_id
 , mr.merchant_month_rank AS prev_month_merchant_rank
 , psc.sales_channel_type_id AS prev_month_primary_channel
 FROM orders o
-LEFT JOIN merchant_ranks mr ON o.merchant_id = mr.merchant_id 
- 							AND DATE_TRUNC('month', o.order_dt) - INTERVAL '1' MONTH = mr.month_ -- taking merchant rank from previous month
+LEFT JOIN merchant_ranks mr ON o.merchant_id = mr.merchant_id
+	AND DATE_TRUNC('month', o.order_dt) - INTERVAL '1' MONTH = mr.month_ -- taking merchant rank from previous month
 LEFT JOIN primary_sales_channels psc ON o.merchant_id = psc.merchant_id
- 									 AND DATE_TRUNC('month', o.order_dt) - INTERVAL '1' MONTH = psc.month_ -- taking sales channel from previous month
+	AND DATE_TRUNC('month', o.order_dt) - INTERVAL '1' MONTH = psc.month_ -- taking sales channel from previous month
